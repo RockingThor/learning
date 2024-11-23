@@ -3,6 +3,7 @@ const express = require("express");
 const redis = require("redis");
 const shortid = require("shortid");
 const cors = require("cors");
+const Redis = require("ioredis");
 
 const app = express();
 app.use(express.json());
@@ -11,6 +12,8 @@ app.use(
     origin: "http://localhost:5173", // Frontend's origin
   })
 );
+
+export const myredis = new Redis();
 
 const redisClients = [
   redis.createClient({
